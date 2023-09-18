@@ -81,7 +81,8 @@ public:
   enum FailureCause{
     MISSING_SERVER = 0,
     ABORTED_BY_SERVER = 1,
-    REJECTED_BY_SERVER = 2
+    REJECTED_BY_SERVER = 2,
+    GOAL_IS_LOST = 3
   };
 
   /// Called when a service call failed. Can be overriden by the user.
@@ -154,6 +155,10 @@ protected:
     else if( action_state == actionlib::SimpleClientGoalState::REJECTED)
     {
       return onFailedRequest( REJECTED_BY_SERVER );
+    }
+    else if( action_state == actionlib::SimpleClientGoalState::LOST)
+    {
+      return onFailedRequest( GOAL_IS_LOST );
     }
     else
     {

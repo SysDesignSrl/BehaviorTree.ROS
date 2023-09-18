@@ -1,4 +1,4 @@
-name: "CI"
+name: "Continuous Integration"
 
 on:
   pull_request:
@@ -14,10 +14,10 @@ jobs:
         os: [ubuntu-20.04]
     steps:
       - name: "Setup ROS"
-        uses: ros-tooling/setup-ros@v0.5
+        uses: ros-tooling/setup-ros@v0.6
         with:
           required-ros-distributions: noetic
       - name: "Build & Test"
-        uses: ros-tooling/action-ros-ci@v0.2
+        uses: ros-tooling/action-ros-ci@v0.3
         with:
           target-ros1-distro: noetic
